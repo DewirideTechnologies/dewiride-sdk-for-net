@@ -5,18 +5,23 @@
     <ImplicitUsings>enable</ImplicitUsings>
     <Nullable>enable</Nullable>
 	  <PackageId>Dewiride.Azure.Storage.Table.Helper</PackageId>
-	  <Version>1.0.0</Version>
-	  <Authors>Jagdish Kumawat</Authors>
+	  <Version>1.0.1</Version>
+	  <Authors>Dewiride</Authors>
 	  <Company>Dewiride Technologies Private Limited</Company>
 	  <Description>This package provides helper methods and an interface for interacting with Azure Table Storage.</Description>
 	  <PackageTags>Azure Table Storage</PackageTags>
 	  <PackageLicenseExpression>MIT</PackageLicenseExpression>
 	  <RepositoryUrl>https://github.com/DewirideTechnologies/dewiride-sdk-for-net</RepositoryUrl>
+	  <PackageReadmeFile>README.md</PackageReadmeFile>
   </PropertyGroup>
 
   <ItemGroup>
     <PackageReference Include="Azure.Data.Tables" Version="12.8.3" />
     <PackageReference Include="Microsoft.Extensions.Logging.Abstractions" Version="8.0.1" />
   </ItemGroup>
+
+	<ItemGroup>
+		<None Include="README.md" Pack="true" PackagePath="\"/>
+	</ItemGroup>
 
 </Project>
