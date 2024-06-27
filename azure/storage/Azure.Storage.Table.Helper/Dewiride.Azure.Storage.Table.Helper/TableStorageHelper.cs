@@ -1,4 +1,5 @@
-﻿using Azure.Data.Tables;
+﻿using Azure;
+using Azure.Data.Tables;
 using Microsoft.Extensions.Logging;
 
 namespace Dewiride.Azure.Storage.Table.Helper
