@@ -1,6 +1,6 @@
 ﻿using Azure.Data.Tables;
 
-namespace Azure.Storage.Table.Helper
+namespace Dewiride.Azure.Storage.Table.Helper
 {
     /// <summary>
     /// Defines methods for interacting with Azure Table Storage.

@@ -1,9 +1,9 @@
-# Azure.Storage.Table.Helper
+# Dewiride.Azure.Storage.Table.Helper
 
 ![NuGet Version](https://img.shields.io/nuget/v/Dewiride.Azure.Storage.Table.Helper)
 ![NuGet Downloads](https://img.shields.io/nuget/dt/Dewiride.Azure.Storage.Table.Helper)
 
-`Azure.Storage.Table.Helper` is a .NET library that provides helper methods and an interface for interacting with Azure Table Storage.
+`Dewiride.Azure.Storage.Table.Helper` is a .NET library that provides helper methods and an interface for interacting with Azure Table Storage.
 
 ## Features
 
@@ -53,6 +53,36 @@ Create an instance of `TableStorageHelper` using the `TableServiceClient` and `I
 using Azure.Storage.Table.Helper;
 
 var tableStorageHelper = new TableStorageHelper(logger, serviceClient);
+```
+
+Initializing the `TableStorageHelper` from a DI container is recommended.
+
+```csharp
+builder.Services.AddAzureClients(clientBuilder =>
+            {
+                clientBuilder.AddTableServiceClient(builder.Configuration["ConnectionString"] ?? throw new NullReferenceException("Table Storage not configured."));
+            });
+
+builder.Services.AddSingleton<ITableStorageHelper, TableStorageHelper>();
+```
+
+Usage in a service:
+
+```csharp
+public class MyService
+{
+	private readonly ITableStorageHelper _tableStorageHelper;
+
+	public MyService(ITableStorageHelper tableStorageHelper)
+	{
+		_tableStorageHelper = tableStorageHelper;
+	}
+
+	public async Task<MyEntity> GetEntityAsync(string partitionKey, string rowKey)
+	{
+		return await _tableStorageHelper.GetEntityAsync<MyEntity>("TableName", partitionKey, rowKey);
+	}
+}
 ```
 
 ### Step 4: Use the Helper Methods

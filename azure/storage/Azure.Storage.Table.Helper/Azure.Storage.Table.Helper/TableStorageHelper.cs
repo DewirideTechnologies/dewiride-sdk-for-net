@@ -1,7 +1,7 @@
 ﻿using Azure.Data.Tables;
 using Microsoft.Extensions.Logging;
 
-namespace Azure.Storage.Table.Helper
+namespace Dewiride.Azure.Storage.Table.Helper
 {
     public class TableStorageHelper : ITableStorageHelper
     {
