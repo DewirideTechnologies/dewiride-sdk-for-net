@@ -13,6 +13,7 @@
 	  <PackageLicenseExpression>MIT</PackageLicenseExpression>
 	  <RepositoryUrl>https://github.com/DewirideTechnologies/dewiride-sdk-for-net</RepositoryUrl>
 	  <PackageReadmeFile>README.md</PackageReadmeFile>
+	  <PackageProjectUrl>https://github.com/DewirideTechnologies/dewiride-sdk-for-net/blob/master/azure/storage/Azure.Storage.Table.Helper/Azure.Storage.Table.Helper/README.md</PackageProjectUrl>
   </PropertyGroup>
 
   <ItemGroup>
