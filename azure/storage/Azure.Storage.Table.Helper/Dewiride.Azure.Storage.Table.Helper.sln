@@ -3,7 +3,7 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.11.35017.193
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Dewiride.Azure.Storage.Table.Helper", "Azure.Storage.Table.Helper\Dewiride.Azure.Storage.Table.Helper.csproj", "{5E8D1C1E-71EC-49BE-A0FD-3CE945B8D078}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Dewiride.Azure.Storage.Table.Helper", "Dewiride.Azure.Storage.Table.Helper\Dewiride.Azure.Storage.Table.Helper.csproj", "{5E8D1C1E-71EC-49BE-A0FD-3CE945B8D078}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
