@@ -11,7 +11,7 @@
 	  <Description>This package provides helper methods and an interface for interacting with Azure Table Storage.</Description>
 	  <PackageTags>Azure Table Storage</PackageTags>
 	  <PackageLicenseExpression>MIT</PackageLicenseExpression>
-	  <RepositoryUrl>https://github.com/your-repo-url</RepositoryUrl>
+	  <RepositoryUrl>https://github.com/DewirideTechnologies/dewiride-sdk-for-net</RepositoryUrl>
   </PropertyGroup>
 
   <ItemGroup>
