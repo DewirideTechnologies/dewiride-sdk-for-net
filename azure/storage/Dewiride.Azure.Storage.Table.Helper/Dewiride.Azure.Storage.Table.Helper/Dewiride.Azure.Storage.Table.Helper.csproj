@@ -5,7 +5,7 @@
     <ImplicitUsings>enable</ImplicitUsings>
     <Nullable>enable</Nullable>
 	  <PackageId>Dewiride.Azure.Storage.Table.Helper</PackageId>
-	  <Version>1.0.2</Version>
+	  <Version>1.0.3</Version>
 	  <Authors>Dewiride</Authors>
 	  <Company>Dewiride Technologies Private Limited</Company>
 	  <Description>This package provides helper methods and an interface for interacting with Azure Table Storage.</Description>
@@ -13,8 +13,8 @@
 	  <PackageLicenseExpression>MIT</PackageLicenseExpression>
 	  <RepositoryUrl>https://github.com/DewirideTechnologies/dewiride-sdk-for-net</RepositoryUrl>
 	  <PackageReadmeFile>README.md</PackageReadmeFile>
-	  <PackageProjectUrl>https://github.com/DewirideTechnologies/dewiride-sdk-for-net/blob/master/azure/storage/Azure.Storage.Table.Helper/Azure.Storage.Table.Helper/README.md</PackageProjectUrl>
-	  <PackageReleaseNotes>Optimised the import statements and changed the namespace.</PackageReleaseNotes>
+	  <PackageProjectUrl>https://github.com/DewirideTechnologies/dewiride-sdk-for-net/blob/master/azure/storage/Dewiride.Azure.Storage.Table.Helper/Dewiride.Azure.Storage.Table.Helper/README.md</PackageProjectUrl>
+	  <PackageReleaseNotes>Changed the Project Url path which was broken.</PackageReleaseNotes>
   </PropertyGroup>
 
   <ItemGroup>
