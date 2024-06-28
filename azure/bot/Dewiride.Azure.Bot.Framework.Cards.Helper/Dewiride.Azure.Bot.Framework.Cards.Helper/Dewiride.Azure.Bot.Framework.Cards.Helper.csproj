@@ -1,0 +1,29 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+	<PropertyGroup>
+		<TargetFramework>net8.0</TargetFramework>
+		<ImplicitUsings>enable</ImplicitUsings>
+		<Nullable>enable</Nullable>
+		<PackageId>Dewiride.Azure.Bot.Framework.Cards.Helper</PackageId>
+		<Version>1.0.0</Version>
+		<Authors>Dewiride</Authors>
+		<Company>Dewiride Technologies Private Limited</Company>
+		<Description>This package provides helper methods and an interface for interacting with Microsoft Bot Framework Supported Cards.</Description>
+		<PackageTags>Microsoft Azure Bot Framework Cards</PackageTags>
+		<PackageLicenseExpression>MIT</PackageLicenseExpression>
+		<RepositoryUrl>https://github.com/DewirideTechnologies/dewiride-sdk-for-net</RepositoryUrl>
+		<PackageReadmeFile>README.md</PackageReadmeFile>
+		<PackageProjectUrl>https://github.com/DewirideTechnologies/dewiride-sdk-for-net/blob/master/azure/storage/Azure.Storage.Table.Helper/Azure.Storage.Table.Helper/README.md</PackageProjectUrl>
+		<PackageReleaseNotes>Support for Adaptive Card with and without data.</PackageReleaseNotes>
+	</PropertyGroup>
+
+	<ItemGroup>
+		<PackageReference Include="AdaptiveCards.Templating" Version="1.5.0" />
+		<PackageReference Include="Microsoft.Bot.Builder.Dialogs" Version="4.22.7" />
+		<PackageReference Include="Microsoft.Bot.Schema" Version="4.22.7" />
+	</ItemGroup>
+
+	<ItemGroup>
+		<None Include="README.md" Pack="true" PackagePath="\"/>
+	</ItemGroup>
+</Project>
