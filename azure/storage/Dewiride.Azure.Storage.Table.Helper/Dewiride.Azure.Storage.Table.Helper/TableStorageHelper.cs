@@ -189,6 +189,30 @@ namespace Dewiride.Azure.Storage.Table.Helper
         }
 
         /// <summary>
+        /// Insert an entity into Azure Table Storage. If the entity exists, it will not be replaced, else a new entity will be created.
+        /// </summary>
+        /// <typeparam name="T"></typeparam>
+        /// <param name="tableName"></param>
+        /// <param name="entity"></param>
+        /// <returns></returns>
+        public async Task<Response?> InsertEntityAsync<T>(string? tableName, T entity) where T : class, ITableEntity, new()
+        {
+            try
+            {
+                if (string.IsNullOrEmpty(tableName))
+                    throw new Exception("Table name cannot be null or empty");
+
+                var tableClient = await GetTableClientAsync(tableName);
+                return await tableClient.AddEntityAsync(entity: entity);
+            }
+            catch (Exception ex)
+            {
+                _logger.LogError($"ERROR: Table Storage Helper Insert Entity --> {ex.Message}");
+                throw;
+            }
+        }
+
+        /// <summary>
         /// Delete a single entity from Azure Table Storage by tenantId as the partition key and aadObjectId as the row key
         /// </summary>
         /// <param name="tableName"></param>

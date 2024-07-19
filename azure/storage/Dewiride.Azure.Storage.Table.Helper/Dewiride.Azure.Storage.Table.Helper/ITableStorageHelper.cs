@@ -64,6 +64,15 @@ namespace Dewiride.Azure.Storage.Table.Helper
         Task<Response?> UpsertEntityAsync<T>(string? tableName, T entity) where T : class, ITableEntity, new();
 
         /// <summary>
+        /// Asynchronously inserts an entity in Azure Table Storage.
+        /// </summary>
+        /// <typeparam name="T">The type of the entity.</typeparam>
+        /// <param name="tableName">The name of the table.</param>
+        /// <param name="entity">The entity to insert.</param>
+        /// <returns>A task that represents the asynchronous operation. The task result contains the Azure response.</returns>
+        Task<Response?> InsertEntityAsync<T>(string? tableName, T entity) where T : class, ITableEntity, new();
+
+        /// <summary>
         /// Asynchronously deletes a single entity from Azure Table Storage.
         /// </summary>
         /// <param name="tableName">The name of the table.</param>
