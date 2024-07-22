@@ -19,6 +19,16 @@ namespace Dewiride.Azure.Storage.Table.Helper
         Task<T?> GetEntityAsync<T>(string tableName, string partitionKey, string rowKey) where T : class, ITableEntity, new();
 
         /// <summary>
+        /// Asynchronously retrieves a single entity from Azure Table Storage by any value.
+        /// </summary>
+        /// <typeparam name="T"></typeparam>
+        /// <param name="tableName"></param>
+        /// <param name="columnName"></param>
+        /// <param name="value"></param>
+        /// <returns></returns>
+        Task<T?> GetEntityByAnyValueAsync<T>(string tableName, string columnName, string value) where T : class, ITableEntity, new();
+
+        /// <summary>
         /// Asynchronously retrieves an entity from Azure Table Storage by email.
         /// </summary>
         /// <typeparam name="T">The type of the entity.</typeparam>

@@ -55,6 +55,32 @@ namespace Dewiride.Azure.Storage.Table.Helper
         }
 
         /// <summary>
+        /// Get a single entity from Azure Table Storage by any value
+        /// </summary>
+        /// <typeparam name="T"></typeparam>
+        /// <param name="tableName"></param>
+        /// <param name="columnName"></param>
+        /// <param name="value"></param>
+        /// <returns></returns>
+        public async Task<T?> GetEntityByAnyValueAsync<T>(string tableName, string columnName, string value) where T : class, ITableEntity, new()
+        {
+            try
+            {
+                if (string.IsNullOrEmpty(tableName))
+                    throw new Exception("Table name cannot be null or empty");
+
+                var tableClient = await GetTableClientAsync(tableName);
+
+                return tableClient.Query<T>(filter: TableClient.CreateQueryFilter($"{columnName} eq {value}")).FirstOrDefault();
+            }
+            catch (Exception ex)
+            {
+                _logger.LogError($"ERROR: Table Storage Helper Get Entity by Any Value --> {ex.Message}");
+                throw;
+            }
+        }
+
+        /// <summary>
         /// Asynchronously retrieves an entity from Azure Table Storage by email.
         /// </summary>
         /// <typeparam name="T">The type of the entity to retrieve, must implement ITableEntity.</typeparam>
