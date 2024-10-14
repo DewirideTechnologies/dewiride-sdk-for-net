@@ -5,7 +5,7 @@
 		<ImplicitUsings>enable</ImplicitUsings>
 		<Nullable>enable</Nullable>
 		<PackageId>Dewiride.Azure.Bot.Framework.Cards.Helper</PackageId>
-		<Version>1.0.0</Version>
+		<Version>1.0.1</Version>
 		<Authors>Dewiride</Authors>
 		<Company>Dewiride Technologies Private Limited</Company>
 		<Description>This package provides helper methods and an interface for interacting with Microsoft Bot Framework Supported Cards.</Description>
@@ -18,12 +18,12 @@
 	</PropertyGroup>
 
 	<ItemGroup>
-		<PackageReference Include="AdaptiveCards.Templating" Version="1.5.0" />
-		<PackageReference Include="Microsoft.Bot.Builder.Dialogs" Version="4.22.7" />
-		<PackageReference Include="Microsoft.Bot.Schema" Version="4.22.7" />
+		<PackageReference Include="AdaptiveCards.Templating" Version="2.0.3" />
+		<PackageReference Include="Microsoft.Bot.Builder.Dialogs" Version="4.22.9" />
+		<PackageReference Include="Microsoft.Bot.Schema" Version="4.22.9" />
 	</ItemGroup>
 
 	<ItemGroup>
-		<None Include="README.md" Pack="true" PackagePath="\"/>
+		<None Include="README.md" Pack="true" PackagePath="\" />
 	</ItemGroup>
 </Project>
