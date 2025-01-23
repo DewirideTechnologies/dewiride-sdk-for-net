@@ -76,6 +76,31 @@ public class MyBotDialog : ComponentDialog
 }
 ```
 
+
+### Sending Suggested Actions
+
+You can send suggested actions to the user using the `SendSuggestedActionsAsync` method:
+
+```csharp
+public MyBotDialog(ICardsHelper cardsHelper)
+{
+    _cardsHelper = cardsHelper;
+}
+
+private async Task<DialogTurnResult> SuggestedActionsStepAsync(WaterfallStepContext stepContext, CancellationToken cancellationToken)
+{
+    var cardActions = new List<CardAction>
+    {
+        new CardAction { Title = "Option 1", Type = ActionTypes.ImBack, Value = "Option 1" },
+        new CardAction { Title = "Option 2", Type = ActionTypes.ImBack, Value = "Option 2" }
+    };
+
+    await _cardsHelper.SendSuggestedActionsAsync(stepContext, cancellationToken, "Please choose an option:", cardActions);
+    return await stepContext.NextAsync(null, cancellationToken);
+}
+```
+
+
 ### Dependency Injection
 
 To use the `CardsHelper` with Dependency Injection (DI) in your bot project, register it in the `Startup.cs` or your DI setup:

@@ -66,5 +66,27 @@ namespace Dewiride.Azure.Bot.Framework.Cards.Helper
             var reply = MessageFactory.Attachment(attachment);
             await stepContext.Context.SendActivityAsync(reply, cancellationToken);
         }
+
+        /// <summary>
+        /// Creates and sends an activity with suggested actions to the user. When the user
+        /// clicks one of the buttons the text value from the "CardAction" will be
+        /// displayed in the channel just as if the user entered the text. There are multiple
+        /// "ActionTypes" that may be used for different situations.
+        /// </summary>
+        /// <param name="stepContext">The context for the current step of the conversation.</param>
+        /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
+        /// <param name="replyText">The text to include in the reply message.</param>
+        /// <param name="cardActions">A list of card actions to include in the suggested actions.</param>
+        /// <returns>A task that represents the asynchronous send operation.</returns>
+        public async Task SendSuggestedActionsAsync(WaterfallStepContext stepContext, CancellationToken cancellationToken, string replyText, List<CardAction> cardActions)
+        {
+            var reply = MessageFactory.Text(replyText);
+
+            reply.SuggestedActions = new SuggestedActions()
+            {
+                Actions = cardActions
+            };
+            await stepContext.Context.SendActivityAsync(reply, cancellationToken);
+        }
     }
 }
