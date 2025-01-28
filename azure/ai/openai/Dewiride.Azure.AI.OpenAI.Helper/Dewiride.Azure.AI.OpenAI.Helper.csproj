@@ -5,7 +5,7 @@
 		<ImplicitUsings>enable</ImplicitUsings>
 		<Nullable>enable</Nullable>
 		<PackageId>Dewiride.Azure.AI.OpenAI.Helper</PackageId>
-		<Version>1.0.2</Version>
+		<Version>1.0.3</Version>
 		<Authors>Dewiride</Authors>
 		<Company>Dewiride Technologies Private Limited</Company>
 		<Description>This package provides helper methods for interacting with Azure OpenAI Chat Completion API with and without data.</Description>
@@ -14,7 +14,7 @@
 		<RepositoryUrl>https://github.com/DewirideTechnologies/dewiride-sdk-for-net</RepositoryUrl>
 		<PackageReadmeFile>README.md</PackageReadmeFile>
 		<PackageProjectUrl>https://github.com/DewirideTechnologies/dewiride-sdk-for-net/blob/master/azure/ai/openai/Dewiride.Azure.AI.OpenAI.Helper/README.md</PackageProjectUrl>
-		<PackageReleaseNotes>Add Streaming Capability.</PackageReleaseNotes>
+		<PackageReleaseNotes>Fix Streaming Capability.</PackageReleaseNotes>
 	</PropertyGroup>
 
 	<ItemGroup>
