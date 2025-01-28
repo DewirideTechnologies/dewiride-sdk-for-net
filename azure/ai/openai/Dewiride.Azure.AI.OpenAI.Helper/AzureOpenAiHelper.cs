@@ -1,4 +1,5 @@
-﻿using Microsoft.Extensions.Logging;
+﻿using Dewiride.Azure.AI.OpenAI.Helper.Models;
+using Microsoft.Extensions.Logging;
 using Newtonsoft.Json;
 using System.Text;
 
@@ -56,6 +57,70 @@ namespace Dewiride.Azure.AI.OpenAI.Helper
 
             _logger.LogError($"All retries failed for request to {apiEndpoint}");
             return default;
+        }
+
+        public async Task GetChatCompletionStreamedResponseAsync<TRequest>(
+            string azureOpenAiEndpoint,
+            string azureOpenAiKey,
+            TRequest request,
+            Action<string> onMessageReceived,
+            int maxRetryAttempts = 5,
+            int retryDelayMs = 1000
+)
+        {
+            string errorMessage = string.Empty;
+            using HttpClient client = new HttpClient { Timeout = Timeout.InfiniteTimeSpan };
+
+            for (int retryCount = 0; retryCount < maxRetryAttempts; retryCount++)
+            {
+                try
+                {
+                    HttpRequestMessage httpRequest = new HttpRequestMessage(HttpMethod.Post, azureOpenAiEndpoint)
+                    {
+                        Headers = { { "api-key", azureOpenAiKey } },
+                        Content = new StringContent(JsonConvert.SerializeObject(request), Encoding.UTF8, "application/json")
+                    };
+
+                    HttpResponseMessage response = await client.SendAsync(httpRequest, HttpCompletionOption.ResponseHeadersRead);
+                    response.EnsureSuccessStatusCode();
+
+                    using Stream responseStream = await response.Content.ReadAsStreamAsync();
+                    using StreamReader reader = new StreamReader(responseStream);
+
+                    while (!reader.EndOfStream)
+                    {
+                        string? line = await reader.ReadLineAsync();
+                        if (line == null || line.StartsWith("data: [DONE]"))
+                            break;
+
+                        if (line.StartsWith("data: "))
+                        {
+                            string jsonData = line.Substring("data: ".Length);
+                            var chunk = JsonConvert.DeserializeObject<OpenAiStreamResponse>(jsonData);
+
+                            string? content = chunk?.Choices?.FirstOrDefault()?.Delta?.Content;
+                            if (!string.IsNullOrEmpty(content))
+                            {
+                                onMessageReceived(content);
+                            }
+                        }
+                    }
+
+                    return; // Exit after successful processing
+                }
+                catch (HttpRequestException ex) when (ex.InnerException is TaskCanceledException)
+                {
+                    _logger.LogWarning($"Timeout error occurred. Retry attempt {retryCount + 1} of {maxRetryAttempts}...");
+                    await Task.Delay(retryDelayMs);
+                }
+                catch (Exception ex)
+                {
+                    _logger.LogWarning($"Error during streaming. Retry attempt {retryCount + 1}. Exception: {ex.Message}");
+                    await Task.Delay(retryDelayMs);
+                }
+            }
+
+            _logger.LogError("Failed to complete streaming after maximum retry attempts.");
         }
     }
 }

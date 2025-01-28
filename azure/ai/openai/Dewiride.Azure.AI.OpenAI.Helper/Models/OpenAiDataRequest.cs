@@ -1,6 +1,6 @@
 ﻿using Newtonsoft.Json;
 
-namespace Dewiride.Azure.AI.OpenAI.Helper
+namespace Dewiride.Azure.AI.OpenAI.Helper.Models
 {
     public class OpenAiDataBaseRequest
     {
