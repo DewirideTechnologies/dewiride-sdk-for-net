@@ -1,4 +1,5 @@
-﻿using Microsoft.Bot.Builder.Dialogs;
+﻿using Dewiride.Azure.Bot.Framework.Cards.Helper.Models;
+using Microsoft.Bot.Builder.Dialogs;
 using Microsoft.Bot.Schema;
 
 namespace Dewiride.Azure.Bot.Framework.Cards.Helper
@@ -27,5 +28,16 @@ namespace Dewiride.Azure.Bot.Framework.Cards.Helper
         /// <param name="cardActions">A list of card actions to include in the suggested actions.</param>
         /// <returns>A task that represents the asynchronous send operation.</returns>
         Task SendSuggestedActionsAsync(WaterfallStepContext stepContext, CancellationToken cancellationToken, string replyText, List<CardAction> cardActions);
+
+        /// <summary>
+        /// Creates and returns an adaptive card with a list based on provided actions and context.
+        /// </summary>
+        /// <param name="submitActions">Defines the actions that can be submitted from the adaptive card.</param>
+        /// <param name="stepContext">Provides the context for the current step in the dialog.</param>
+        /// <param name="cancellationToken">Allows for the operation to be canceled if needed.</param>
+        /// <param name="paths">Specifies optional paths for data binding in the adaptive card.</param>
+        /// <param name="textBlockValue">Holds an optional value for a text block within the adaptive card.</param>
+        /// <returns>Returns a result indicating the outcome of the dialog turn.</returns>
+        Task<DialogTurnResult> CreateListAdaptiveCardAsync(List<SubmitAction> submitActions, WaterfallStepContext stepContext, CancellationToken cancellationToken, string[]? paths = null, string? textBlockValue = null);
     }
 }
